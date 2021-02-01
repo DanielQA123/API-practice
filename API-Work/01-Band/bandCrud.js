@@ -14,7 +14,7 @@ const bandIdDelete = document.querySelector("#bandIdDelete");
 
 //Create Functionality using the BandAPI: 
 const createBand = () => {
-    const bandName = _bandName.value;
+    const bandName = bandName.value;
 
     let data = {
         "musicans": [null],
@@ -48,14 +48,14 @@ const readALLBand = () => {
 const readIdBand = () => {
     const bandIdRead = bandIdRead.value;
 
-    fetch(`http://localhost:8901/band/read/${bandIdRead}`)
+    fetch("http://localhost:8901/band/read/${bandIdRead}")
         .then(response => response.json())
         .then(info => console.log(info))
         .catch(err => console.error(`error${err}`));
 }
 
 const readByNameBrand = (name) => {
-    fetch(`http://localhost:8901/band/read/${name}`)
+    fetch("http://localhost:8901/band/read/${name}")
         .then(response => response.json())
         .then(info => {
             for (let band of info) {
@@ -75,7 +75,7 @@ const updateBand = () => {
         "name": bandNameUpdate
     }
 
-    fetch(`http://localhost:8901/band/update/${bandIdUpdate}`, {
+    fetch("http://localhost:8901/band/update/${bandIdUpdate}", {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {
@@ -90,7 +90,7 @@ const updateBand = () => {
 const deleteByIdBand = () => {
     const bandIdDelete = bandIdDelete.value;
 
-    fetch(`http://localhost:8901/band/delete/${bandIdDelete}`,{
+    fetch("http://localhost:8901/band/delete/${bandIdDelete}",{
         method: "DELETE",
         headers: {
             "Content-Type" : "application/json"
